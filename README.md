@@ -153,4 +153,4 @@ This uses Arachnid's deterministic CREATE2 deployer to land the proxy at the can
 - [agentbill-base](../agentbill-base/) — Base/Coinbase variant (EIP-3009)
 - [x402 protocol](https://x402.org)
 - [x402 GitHub](https://github.com/coinbase/x402)
-# agentbill-hsk
+
