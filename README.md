@@ -24,6 +24,15 @@ HashKey Chain's USDC uses **Permit2** as the settlement mechanism (no EIP-3009 `
 - Permit2: `0x000000000022D473030F116dDEE9F6B43aC78BA3`
 - x402ExactPermit2Proxy: `0x402085c248EeA27D92E8b30b2C58ed07f9E20001`
 
+## Two-line integration
+
+```typescript
+agentBill.init({ receivingAddress: "0xYourAddress", network: "hashkey-testnet" });
+app.get("/api/data", requirePayment({ amount: "0.01" }), handler);
+```
+
+That's it. No payment processor, no billing account, no webhook setup.
+
 ## Quick start
 
 ### 1. Install
@@ -58,7 +67,7 @@ Agent wallet: 0xabc...
 Target:       http://localhost:3000/api/weather
 
 Calling paid endpoint...
-Status: 200 (9078ms)
+Status: 200 (6751ms)
 Response: {
   "city": "Hong Kong",
   "temp": "28°C",
