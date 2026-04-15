@@ -14,10 +14,14 @@ import { agentBill, requirePayment } from "../src/index.js";
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.on("finish", () => console.log(`${res.statusCode} ${req.method} ${req.path}`));
+  next();
+});
+
 agentBill.init({
   receivingAddress: process.env.RECEIVING_ADDRESS as `0x${string}`,
   network: "hashkey-testnet",
-  // facilitatorPrivateKey falls back to FACILITATOR_PRIVATE_KEY env var
 });
 
 // Free route

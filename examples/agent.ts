@@ -4,8 +4,6 @@
  * Simulates an AI agent that autonomously pays for API access on HashKey Chain.
  * No human in the loop — the agent detects the 402, signs a Permit2 authorization,
  * and retries. From the agent's perspective it's just a fetch() call.
- *
- * Usage (in a separate terminal after server is running):
  *   npm run example:agent
  */
 import "dotenv/config";
@@ -44,7 +42,9 @@ async function main() {
   } else if (response.status === 402) {
     const header = response.headers.get("PAYMENT-REQUIRED");
     if (header) {
-      const decoded = JSON.parse(Buffer.from(header, "base64").toString("utf8"));
+      const decoded = JSON.parse(
+        Buffer.from(header, "base64").toString("utf8")
+      );
       console.error("Payment failed:", decoded.error ?? decoded);
     } else {
       console.error("402 Payment Required — check server logs.");
